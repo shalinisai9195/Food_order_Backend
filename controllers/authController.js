@@ -19,7 +19,7 @@ authController.post('/register',async(req,res)=>{
         const {password,...others} = newUser._doc
         console.log(others)
 
-        const token = jwt.sign({id:newUser._id,isAdmin: newUser.isAdmin}, process.env.JWT_SECRET,{expiresIn: '5h'})
+        const token = jwt.sign({id:newUser._id,isAdmin: newUser.isAdmin}, process.env.JWT_SECRET,{expiresIn: '30d'})
 
         return res.status(201).json({...others,token})
     } catch (error) {
